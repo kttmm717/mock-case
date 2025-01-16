@@ -1,0 +1,114 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+.header {
+    background-color: black;
+}
+.header__inner {
+    max-width: 1230px;
+    margin: 0 auto;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header-nav-ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.header-nav-ul li {
+    margin-left: 10px;
+}
+.logout__link,
+.mypage__link {
+    color: white;
+    text-decoration: none;
+}
+.header-img {
+    width: 25%;
+}
+.header__input {
+    width: 30%;
+    padding: 10px 30px;
+    border-radius: 3px;
+}
+.header-nav {
+    width: 30%;
+}
+.header-nav-ul li:last-child {
+    background-color: white;
+    text-align: center;
+    border-radius: 3px;
+}
+.listing__link {
+    color: black;
+    text-decoration: none;
+    padding: 5px 15px;
+    display: inline-block;
+}
+
+.edit-profile {
+    max-width: 1230px;
+    margin: 0 auto;
+}
+.edit-profile__inner {
+    width: 60%;
+    margin: 70px auto;
+}
+.edit-profile-title {
+    text-align: center;
+    padding: 30px;
+}
+.edit-profile-form__group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #c9c9c9;
+    border-radius: 3px;
+    height: 50px;
+}
+.edit-profile-form__group--item {
+    font-size: 18px;
+    font-weight: bold;
+}
+.error {
+    color: red;
+}
+.edit-profile-form__group {
+    padding-bottom: 20px;
+}
+.edit-profile-form__button {
+    width: 100%;
+    margin: 20px 0;
+}
+.edit-profile-form__button button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    background-color: rgb(255, 96, 72);
+    color: white;
+    border: none;
+    border-radius: 3px;
+    height: 50px;
+    font-weight: bold;
+}
+.edit-profile-form__img {
+    display: flex;
+    align-items: center;
+    margin-bottom: 60px;
+}
+.img {
+    background-color: #ddd;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+.edit-profile-form__img--text {
+    color: rgb(255, 96, 72);
+    border: 1px solid rgb(255, 96, 72);
+    border-radius: 10px;
+    font-weight: bold;
+    margin-left: 40px;
+    padding: 5px 15px;
+}

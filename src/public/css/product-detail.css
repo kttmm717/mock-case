@@ -1,0 +1,93 @@
+.product-detail {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 60px auto;
+}
+aside {
+    width: 46%;
+}
+.main {
+    width: 46%;
+}
+.aside__image img {
+    width: 100%;
+}
+.item__name {
+    font-size: 30px;
+}
+.price {
+    font-size: 26px;
+}
+.price__span {
+    font-size: 16px;
+}
+.purchase-procedure__btn button {
+    width: 100%;
+    padding: 8px;
+    margin: 20px 0;
+    background-color: rgb(255, 96, 72);
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.brand-name {
+    font-size: 12px;
+}
+.item-information {
+    font-size: 20px;
+}
+.item-description {
+    padding: 20px 0;
+}
+.category {
+    padding-top: 10px;
+}
+.condition {
+    padding-bottom: 20px;
+}
+.comment {
+    color: #808080;
+    padding-bottom: 10px;
+}
+.user {
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+}
+.user__image {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #ddd;
+}
+.user__name {
+    padding-left: 10px;
+    font-weight: bold;
+}
+.comment_content {
+    border-radius: 3px;
+    background-color: #ddd;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+.comment__textarea {
+    font-weight: bold;
+}
+.comment-form textarea {
+    width: 100%;
+    height: 160px;
+    padding: 10px;
+}
+.submit-comment {
+    width: 100%;
+    padding: 8px;
+    margin: 20px 0;
+    background-color: rgb(255, 96, 72);
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
