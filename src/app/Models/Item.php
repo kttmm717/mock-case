@@ -19,4 +19,10 @@ class Item extends Model
         'category_id',
         'condition_id'
     ];
+    public function likes() {
+        return $this->hasMany(Like::class);
+    }
+    public function comments() {
+        return $this->hasMany(Comment::class);
+    }
 }

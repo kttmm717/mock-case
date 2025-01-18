@@ -1,0 +1,113 @@
+.sell__inner {
+    width: 50%;
+    margin: 40px auto;
+}
+.sell__title {
+    text-align: center;
+}
+.sell__img--area {
+    border: 1px dashed #a0a0a0;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 60px;
+}
+.sell__img--area label {
+    border: 3px solid rgb(255, 96, 72);
+    color: rgb(255, 96, 72);
+    padding: 5px 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 12px;
+    cursor: pointer;
+}
+.sell__img--area input {
+    display: none;
+}
+.section-title {
+    border-bottom: 1px solid #a0a0a0;
+    color: #787878;
+    margin: 10px 0;
+    font-size: 24px;
+}
+.sell__category {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-top: 10px;
+    margin-bottom: 30px;
+}
+.category-label {
+    border: 3px solid rgb(255, 96, 72);
+    color: rgb(255, 96, 72);
+    padding: 3px 13px;
+    border-radius: 20px;
+    display: inline-block;
+    font-size: 12px;
+    margin: 10px 5px;
+    cursor: pointer;
+}
+input[type="checkbox"]:checked + .category-label {
+    background-color: rgb(255, 96, 72);
+    color: white;
+}
+.sell__category input {
+    display: none;
+}
+.item-condition__select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #a0a0a0;
+    border-radius: 3px;
+    margin-top: 5px;
+    margin-bottom: 50px;
+    cursor: pointer;
+}
+.section-item {
+    font-weight: bold;
+    padding-top: 30px;
+}
+.item-name__input,
+.item-price__input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #a0a0a0;
+    border-radius: 3px;
+}
+.item-discription__textarea {
+    width: 100%;
+    height: 120px;
+    border: 1px solid #a0a0a0;
+    border-radius: 3px;
+    resize: none;
+    padding: 10px;
+}
+.sell-btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    background-color: rgb(255, 96, 72);
+    color: white;
+    border: none;
+    border-radius: 3px;
+    height: 40px;
+    font-weight: bold;
+    margin: 60px 0;
+    cursor: pointer;
+}
+.yen-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.yen {
+    position: absolute;
+    left: 10px;
+}
+.item-price__input {
+    padding-left: 30px;
+}
+.error {
+    color: red;
+}

@@ -21,14 +21,17 @@
                     @csrf
                     <div class="login-form__group">
                         <p class="login-form__group--item">ユーザー名/メールアドレス</p>
-                        <input type="text">
+                        <input type="text" name='email' required autofocus>
+                        @error('name')
+                        <p class="error">{{$message}}</p>
+                        @enderror
                         @error('email')
                         <p class="error">{{$message}}</p>
                         @enderror
                     </div>
                     <div class="login-form__group">
                         <p class="login-form__group--item">パスワード</p>
-                        <input type="password">
+                        <input type="password" name='password' required>
                         @error('password')
                         <p class="error">{{$message}}</p>
                         @enderror

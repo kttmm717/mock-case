@@ -20,28 +20,28 @@
             </div>
             <div class="edit-profile-form__group">
                 <p class="edit-profile-form__group--item">ユーザー名</p>
-                <input type="text" name='name'>
+                <input type="text" name='name' value="{{old('name', auth()->user()->name)}}">
                 @error('name')
                 <p class="error">{{$message}}</p>
                 @enderror
             </div>
             <div class="edit-profile-form__group">
                 <p class="edit-profile-form__group--item">郵便番号</p>
-                <input type="text" name='zipcode'>
+                <input type="text" name='zipcode' value="{{old('zipcode', auth()->user()->zipcode)}}">
                 @error('zipcode')
                 <p class="error">{{$message}}</p>
                 @enderror
             </div>
             <div class="edit-profile-form__group">
                 <p class="edit-profile-form__group--item">住所</p>
-                <input type="text" name='address'>
+                <input type="text" name='address' value="{{old('address', auth()->user()->address)}}">
                 @error('address')
                 <p class="error">{{$message}}</p>
                 @enderror
             </div>
             <div class="edit-profile-form__group">
                 <p class="edit-profile-form__group--item">建物名</p>
-                <input type="text" name='building'>
+                <input type="text" name='building' value="{{old('building', auth()->user()->building)}}">
                 @error('building')
                 <p class="error">{{$message}}</p>
                 @enderror

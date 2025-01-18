@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\LikeController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,14 +23,21 @@ Route::middleware('auth')->group(function () {
 });
 Route::post('/register', [RegisterController::class, 'store']);
 
-Route::get('/mypage/profile', [ProfileController::class, 'profile']);
+Route::get('/mypage', [ProfileController::class, 'mypageView']);
+Route::get('/mypage/profile', [ProfileController::class, 'editProfile']);
 Route::post('/mypage/profile/update', [ProfileController::class, 'storeProfile']);
 
 Route::get('/item', [ItemController::class, 'detail']);
-Route::post('/purchase', [ItemController::class, 'procedure']);
-Route::post('/purchase/address', [ItemController::class, 'edit']);
-Route::post('/purchase/address/update', [ItemController::class, 'update']);
+Route::post('/purchase', [ItemController::class, 'procedureView']);
+Route::post('/purchase/address', [ItemController::class, 'editAddress']);
+Route::post('/purchase/address/update', [ItemController::class, 'updateAddress']);
+Route::get('/sell', [ItemController::class, 'sellView']);
+Route::post('/sale', [ItemController::class, 'sale']);
 
+Route::post('/posts/{item}/like', [LikeController::class, 'store'])->middleware('auth');
+Route::delete('/posts/{item}/like', [LikeController::class, 'destroy'])->middleware('auth');
+
+Route::post('/items/{item}/comments', [CommentController::class, 'store'])->middleware('auth');
 
 
 

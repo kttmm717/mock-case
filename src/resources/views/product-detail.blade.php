@@ -19,9 +19,37 @@
         <h2 class="item__name">{{$item['item_name']}}</h2>
         <p class="brand-name">ブランド名</p>
         <p class="price">&yen;{{number_format($item->price)}} <span class="price__span">(税込)</span></p>
-        <div>
-            <!-- いいね機能・コメント機能 -->
+        
+        <div class="icon">
+            <div class="like">
+            @if($item->likes->where('user_id', auth()->id())->count())
+            <!-- いいね済みの場合 -->
+                <form class="like-form" action="/posts/{{$item->id}}/like" method="post">
+                    @csrf
+                    @method('delete')
+                    <button type="submit">
+                        <i class="fas fa-star"></i>
+                    </button>
+                </form>
+            @else
+            <!-- いいねしていない場合 -->
+                <form class="like-form" action="/posts/{{$item->id}}/like" method="post">
+                    @csrf
+                    <button type="submit">
+                        <i class="far fa-star"></i>
+                    </button>
+                </form>
+            @endif
+            <!-- いいね数表示 -->
+            <span class="like-span">{{$item->likes->count()}}</span>
+            </div>
+
+            <div class="comment-icon">
+                <i class="far fa-comment"></i>
+                <span>{{$item->comments->count()}}</span>
+            </div>
         </div>
+
         <form class="purchase-procedure__btn" action="/purchase/?id={{$item->id}}" method="post">
             @csrf
             <button>購入手続きへ</button>
@@ -41,19 +69,27 @@
             <span>良好</span>
         </div>
 
-        <h3 class="comment">コメント(1)</h3>
-        <div class="comment-information">
-            <div class="user">
-                <p class="user__image"></p>
-                <p class="user__name">admin</p>
-            </div>
-            <p class="comment_content">こちらにコメントが入ります。</p>
-            <p class="comment__textarea">商品へのコメント</p>
-            <form class="comment-form" action="">
-                <textarea name=""></textarea>
+        <h3 class="comment">コメント({{$item->comments->count()}})</h3>
+        <ul class="comment-information">
+            @foreach($item->comments as $comment)
+            <li>
+                <div class="user">
+                    <img class="user__image"
+                     src="{{$comment->user->profile_image_url}}" 
+                     alt="{{$comment->user->name}}">
+                    <p class="user__name">{{$comment->user->name}}</p>
+                </div>
+                <p class="comment__content">{{$comment->content}}</p>
+                
+            </li>
+            @endforeach
+            <form class="comment-form" action="/items/{{$item->id}}/comments" method="post">
+                @csrf
+                <p class="comment__textarea">商品へのコメント</p>
+                <textarea name="content"></textarea>
                 <button class="submit-comment">コメントを送信する</button>
             </form>
-        </div>
+        </ul>
     </div>
 </div>
 @endsection

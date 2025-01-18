@@ -6,6 +6,7 @@
     <title>@yield('title')</title>
     <link rel="stylesheet" href="{{asset('css/sanitize.css')}}">
     <link rel="stylesheet" href="{{asset('css/default.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     @yield('css')
 </head>
 <body>
@@ -21,8 +22,8 @@
                             <button>ログアウト</button>
                         </form>
                     </li>
-                    <li class="header-nav-ul__li"><a class="mypage__link" href="">マイぺージ</a></li>
-                    <li class="header-nav-ul__li"><a class="listing__link" href="">出品</a></li>
+                    <li class="header-nav-ul__li"><a class="mypage__link" href="/mypage">マイぺージ</a></li>
+                    <li class="header-nav-ul__li"><a class="listing__link" href="/sell">出品</a></li>
                 </ul>
             </nav>
         </div>
