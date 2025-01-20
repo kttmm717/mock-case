@@ -1,4 +1,4 @@
-.product-purchase {
+#product-purchase {
     display: flex;
     justify-content: space-between;
     width: 90%;
@@ -34,16 +34,16 @@
 .item-price {
     font-size: 24px;
 }
-.payment-method {
+#payment-app {
     padding: 20px;
     border-bottom: 1px solid black;
     padding-bottom: 30px;
 }
-.payment-method__text {
+.payment-app__text {
     padding-bottom: 22px;
     font-weight: bold;
 }
-.payment-method__select {
+.payment-app__select {
     margin-left: 40px;
     margin-bottom: 10px;
 }
@@ -70,6 +70,7 @@
 }
 .purchase-table__row {
     border-bottom: 1px solid black;
+    height: 100px;
 }
 .purchase-table__header {
     padding: 10px;

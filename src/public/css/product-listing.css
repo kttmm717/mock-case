@@ -8,6 +8,7 @@
 .sell__img--area {
     border: 1px dashed #a0a0a0;
     height: 120px;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;

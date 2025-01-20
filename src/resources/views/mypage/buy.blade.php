@@ -26,5 +26,16 @@
     <a class="select-tag__mylist" href="{{'/mypage/?page=buy'}}">購入した商品</a>
     </div>
 </div>
-
+<div class="catalog-page">
+    @foreach($purchases as $purchase)
+    <div class="catalog-page__group">
+        <div class="catalog-page__img">
+            <img src="{{asset('storage/' . $purchase->item->image)}}" alt="商品画像">
+        </div>
+        <div class="catalog-page__name">
+            {{$purchase->item->item_name}}
+        </div>
+    </div>
+    @endforeach
+</div>
 @endsection

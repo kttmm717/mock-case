@@ -98,7 +98,7 @@
     align-items: center;
     margin-bottom: 60px;
 }
-.img {
+#preview {
     background-color: #ddd;
     width: 150px;
     height: 150px;
@@ -111,4 +111,8 @@
     font-weight: bold;
     margin-left: 40px;
     padding: 5px 15px;
+    cursor: pointer;
+}
+.edit-profile-form__img input {
+    display: none;
 }

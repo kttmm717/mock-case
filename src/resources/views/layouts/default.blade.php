@@ -28,8 +28,8 @@
             </nav>
         </div>
     </header>
-    <main>
-        @yield('content')
-    </main>
+    
+@yield('content')
+
 </body>
 </html>

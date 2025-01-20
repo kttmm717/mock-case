@@ -126,3 +126,7 @@ li {
     text-align: center;
     margin-left: 40px;
 }
+.comment-form__textarea {
+    border-radius: 3px;
+    resize: none;
+}

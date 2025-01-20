@@ -6,6 +6,8 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\PurchaseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +41,8 @@ Route::delete('/posts/{item}/like', [LikeController::class, 'destroy'])->middlew
 
 Route::post('/items/{item}/comments', [CommentController::class, 'store'])->middleware('auth');
 
+Route::post('/create-checkout-session', [PaymentController::class, 'createCheckoutSession']);
 
+Route::post('/purchase-procedure', [PurchaseController::class, 'purchase']);
 
 

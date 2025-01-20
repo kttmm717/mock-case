@@ -47,7 +47,7 @@ class ItemController extends Controller
         return view('product-listing', compact('categories', 'conditions'));
     }
     public function sale(ExhibitionRequest $request) {
-        $image = $request->file('image')->store('images', 'public');
+        $image = $request->file('image')->store('item_images', 'public');
         $sale = Sale::create([
             'user_id' => auth()->id(),
             'image' => $image,
@@ -57,6 +57,6 @@ class ItemController extends Controller
             'price' => $request->price
         ]);
         $sale->categories()->attach($request->categories);
-        return redirect('/');
+        return redirect('/mypage');
     }
 }

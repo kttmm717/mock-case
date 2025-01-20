@@ -12,10 +12,13 @@
 }
 .select-tag__best {
     padding-left: 100px;
+    text-decoration: none;
+    color: #8b8b8b;
 }
 .select-tag__mylist {
     padding-left: 70px;
-    color: red;
+    text-decoration: none;
+    color: #8b8b8b;
 }
 .catalog-page {
     width: 90%;
@@ -29,6 +32,7 @@
 }
 .catalog-page__img img {
     width: 100%;
+    height: 180px;
 }
 .catalog-page__name {
     padding-top: 10px;
@@ -42,7 +46,7 @@
     margin-top: 60px;
 
 }
-.user__information span {
+.user__information img {
     display: inline-block;
     height: 150px;
     width: 150px;

@@ -12,7 +12,7 @@
 <div class="product-detail">
     <aside>
         <div class="aside__image">
-            <img src="{{$item->image_url}}" alt="">
+            <img src="{{asset('storage/' . $item->image)}}" alt="">
         </div>
     </aside>
     <div class="main">
@@ -44,6 +44,7 @@
             <span class="like-span">{{$item->likes->count()}}</span>
             </div>
 
+            <!-- コメントアイコン -->
             <div class="comment-icon">
                 <i class="far fa-comment"></i>
                 <span>{{$item->comments->count()}}</span>
@@ -75,7 +76,7 @@
             <li>
                 <div class="user">
                     <img class="user__image"
-                     src="{{$comment->user->profile_image_url}}" 
+                     src="{{$comment->user->profile_image}}" 
                      alt="{{$comment->user->name}}">
                     <p class="user__name">{{$comment->user->name}}</p>
                 </div>
@@ -86,7 +87,7 @@
             <form class="comment-form" action="/items/{{$item->id}}/comments" method="post">
                 @csrf
                 <p class="comment__textarea">商品へのコメント</p>
-                <textarea name="content"></textarea>
+                <textarea class="comment-form__textarea" name="content"></textarea>
                 <button class="submit-comment">コメントを送信する</button>
             </form>
         </ul>

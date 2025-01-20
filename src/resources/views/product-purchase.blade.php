@@ -9,24 +9,23 @@
 @endsection
 
 @section('content')
-<div class="product-purchase">
+<div id="product-purchase">
     <div class="left">
         <div class="item__information">
             <div class="item__information--image">
-                <img src="{{$item->image_url}}" alt="">
+                <img src="{{asset('storage/' . $item->image)}}" alt="">
             </div>
             <div class="item__information--text">
                 <p class="item-name">{{$item->item_name}}</p>
                 <p class="item-price">&yen;{{number_format($item->price)}}</p>
             </div>
         </div>
-        <div class="payment-method">
-            <p class="payment-method__text">支払い方法</p>
-            <select class="payment-method__select" name="">
+        <div id="payment-app">
+            <p class="payment-app__text">支払い方法</p>
+            <select class="payment-app__select" v-model="paymentMethod">
                 <option value="">選択してください</option>
-                @foreach($payments as $payment)
-                <option value="">{{$payment->content}}</option>
-                @endforeach
+                <option value="convenience">コンビニ支払い</option>
+                <option value="card">カード支払い</option>
             </select>
         </div>
         <div class="shipping-address">
@@ -52,10 +51,34 @@
             </tr>
             <tr class="purchase-table__row">
                 <th class="purchase-table__header">支払い方法</th>
-                <td class="purchase-table__date">コンビニ支払い</td>
+                <td class="purchase-table__date">
+                    <div v-if="paymentMethod === 'convenience'">コンビニ支払い</div>
+                    <div v-if="paymentMethod === 'card'">カード支払い</div>
+                </td>
             </tr>
         </table>
-        <button class="purchase-btn">購入する</button>
+        <form action="/purchase-procedure/?id={{$item->id}}" method="post">
+            @csrf
+            <button class="purchase-btn">
+                購入する
+            </button>
+        </form>
     </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#product-purchase',
+        data: {
+            paymentMethod: ''
+        },
+        watch: {
+            paymentMethod(newValue) {
+                console.log("選択された支払い方法:", newValue);
+            }
+        }
+    });
+</script>
+
 @endsection
