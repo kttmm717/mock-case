@@ -30,7 +30,7 @@
     @foreach($purchases as $purchase)
     <div class="catalog-page__group">
         <div class="catalog-page__img">
-            <img src="{{asset('storage/' . $purchase->item->image)}}" alt="商品画像">
+            <img src="{{$purchase->item->image}}" alt="商品画像">
         </div>
         <div class="catalog-page__name">
             {{$purchase->item->item_name}}

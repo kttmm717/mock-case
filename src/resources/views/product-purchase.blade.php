@@ -13,7 +13,7 @@
     <div class="left">
         <div class="item__information">
             <div class="item__information--image">
-                <img src="{{asset('storage/' . $item->image)}}" alt="">
+                <img src="{{$item->image}}" alt="">
             </div>
             <div class="item__information--text">
                 <p class="item-name">{{$item->item_name}}</p>

@@ -12,8 +12,13 @@
 <body>
     <header class="header">
         <div class="header__inner">
-            <img class="header-img" src="{{asset('images/logo.svg')}}" alt="">
-            <input class="header__input" type="text" placeholder="なにをお探しですか？">
+            <form class="header-form" action="/" method="get">
+                <input type="image" class="header-form__image" src="{{asset('images/logo.svg')}}" alt="">
+            </form>
+            <form action="">
+                @csrf
+                <input class="header__input" type="text" placeholder="なにをお探しですか？">
+            </form>
             <nav class="header-nav">
                 <ul class="header-nav-ul">
                     <li class="header-nav-ul__li">

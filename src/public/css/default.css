@@ -31,8 +31,12 @@
     color: white;
     text-decoration: none;
 }
-.header-img {
-    width: 25%;
+.header-form {
+    width: 20%;
+    cursor: pointer;
+}
+.header-form__image {
+    width: 100%;
 }
 .header__input {
     width: 30%;

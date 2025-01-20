@@ -19,7 +19,7 @@
     @foreach($items as $item)
     <div class="catalog-page__group">
         <div class="catalog-page__img">
-            <img src="{{$item->image_url}}" alt="">
+            <img src="{{$item->image}}" alt="商品画像">
         </div>
         <div class="catalog-page__name">
             {{$item->item_name}}

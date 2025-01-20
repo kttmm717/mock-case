@@ -90,15 +90,9 @@ class ItemsTableSeeder extends Seeder
         ];
         
         foreach($items as $item) {
-            $imageContents = Http::get($item['image'])->body();
-            $imageName = basename(parse_url($item['image'], PHP_URL_PATH));
-            $storagePath = "items/" . $imageName;
-
-            Storage::disk('public')->put($storagePath, $imageContents);
-
             DB::table('items')->insert([
                 'item_name' => $item['item_name'],
-                'image' => $storagePath, // `storage/app/public/items/` に保存されたパス
+                'image' => $item['image'], 
                 'price' => $item['price'],
                 'item_description' => $item['item_description'],
                 'condition_id' => $item['condition_id'],
