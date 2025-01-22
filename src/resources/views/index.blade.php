@@ -11,20 +11,9 @@
 @section('content')
 <div class="select-tag">
     <div class="select-tag__inner">
-        <p class="select-tag__best">おすすめ</p>
-        <p class="select-tag__mylist">マイリスト</p>
+        <a class="select-tag__best" href="{{'/?page=best'}}">おすすめ</a>
+        <a class="select-tag__mylist" href="{{'/?page=mylist'}}">マイリスト</a>
     </div>
 </div>
-<div class="catalog-page">
-    @foreach($items as $item)
-    <div class="catalog-page__group">
-        <div class="catalog-page__img">
-            <img src="{{$item->image}}" alt="商品画像">
-        </div>
-        <div class="catalog-page__name">
-            {{$item->item_name}}
-        </div>
-    </div>
-    @endforeach
-</div>
+
 @endsection

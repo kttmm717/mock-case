@@ -51,10 +51,7 @@
             </div>
         </div>
 
-        <form class="purchase-procedure__btn" action="/purchase/?id={{$item->id}}" method="post">
-            @csrf
-            <button>購入手続きへ</button>
-        </form>
+        <a class="purchase-procedure__btn" href="/purchase/?id={{$item->id}}">購入手続きへ</a>
 
         <h3 class="item-information">商品説明</h3>
         <p class="item-description">{{$item->item_description}}</p>
@@ -88,6 +85,7 @@
                 @csrf
                 <p class="comment__textarea">商品へのコメント</p>
                 <textarea class="comment-form__textarea" name="content"></textarea>
+                <!-- エラー機能 -->
                 <button class="submit-comment">コメントを送信する</button>
             </form>
         </ul>

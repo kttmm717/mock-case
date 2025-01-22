@@ -14,19 +14,43 @@ use App\Models\Sale;
 
 class ItemController extends Controller
 {
-    public function index() {
-        $items = Item::all();
-        return view('index', compact('items'));
+    public function index(Request $request) {
+        if(Auth::check()) {
+            $page = $request->query('page', 'best');
+            $user = auth()->user();
+
+            if($page === 'mylist') {
+                $likes = $user->likes()->with('item')->get();
+                return view('index.mylist', compact('likes'));
+            }else {
+                $items = Item::all();
+                return view('index.best', compact('items'));
+            }
+        } else {
+            $page = $request->query('page', 'best');
+            $user = auth()->user();
+
+            if($page === 'best') {
+                $items = Item::all();
+                return view('index.best', compact('items'));
+            }else {
+                return view('index');
+            }
+        }
     }
     public function detail(Request $request) {
         $item = Item::find($request->id);
         return view('product-detail', compact('item'));
     }
     public function procedureView(Request $request) {
-        $item = Item::find($request->id);
-        $payments = Payment::all();
-        $user = Auth::user();
-        return view('product-purchase', compact('item', 'payments', 'user'));
+        if(Auth::check()) {
+            $item = Item::find($request->id);
+            $payments = Payment::all();
+            $user = Auth::user();
+            return view('product-purchase', compact('item', 'payments', 'user'));
+        } else {
+            return view('auth.login');
+        }
     }
     public function editAddress(Request $request) {
         $item = Item::find($request->id);
@@ -42,9 +66,13 @@ class ItemController extends Controller
         return view('product-purchase', compact('item', 'payments', 'user'));
     }
     public function sellView() {
-        $categories = Category::all();
-        $conditions = Condition::all();
-        return view('product-listing', compact('categories', 'conditions'));
+        if(Auth::check()) {
+            $categories = Category::all();
+            $conditions = Condition::all();
+            return view('product-listing', compact('categories', 'conditions'));    
+        } else {
+            return view('auth.login');
+        }
     }
     public function sale(ExhibitionRequest $request) {
         $image = $request->file('image')->store('item_images', 'public');
@@ -58,5 +86,9 @@ class ItemController extends Controller
         ]);
         $sale->categories()->attach($request->categories);
         return redirect('/mypage');
+    }
+    public function search(Request $request) {
+        $items = Item::keywordSearch($request->keyword)->get();
+        return view('index', compact('items'));
     }
 }

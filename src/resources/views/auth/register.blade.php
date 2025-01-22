@@ -17,7 +17,7 @@
         <div class="register">
             <div class="register__inner">
                 <h2 class="register-title">会員登録</h2>
-                <form class="register-form" action="/register" method="post">
+                <form class="register-form" action="/register" method="post" novalidate>
                     @csrf
                     <div class="register-form__group">
                         <p class="register-form__group--item">ユーザー名</p>
@@ -43,7 +43,7 @@
                     <div class="register-form__group">
                         <p class="register-form__group--item">確認用パスワード</p>
                         <input type="password" name='password_confirmation'>
-                        @error('password')
+                        @error('password_confirmation')
                         <p class="error">{{$message}}</p>
                         @enderror
                     </div>

@@ -18,6 +18,7 @@ class CreateItemsTable extends Migration
             $table->string('item_name');
             $table->text('image');
             $table->integer('price');
+            $table->boolean('is_sold')->default(false);
             $table->integer('favorite')->nullable();
             $table->text('comment_id')->nullable();
             $table->text('item_description');

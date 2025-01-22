@@ -92,11 +92,11 @@
     border-radius: 3px;
     height: 50px;
     font-weight: bold;
+    cursor: pointer;
 }
 .edit-profile-form__img {
     display: flex;
     align-items: center;
-    margin-bottom: 60px;
 }
 #preview {
     background-color: #ddd;
@@ -115,4 +115,7 @@
 }
 .edit-profile-form__img input {
     display: none;
+}
+.name {
+    margin-top: 60px;
 }

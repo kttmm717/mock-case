@@ -8,7 +8,9 @@ use App\Models\Item;
 class LikeController extends Controller
 {
     public function store(Item $item) {
-        $item->likes()->create(['user_id' => auth()->id()]);
+        $user = auth()->user();
+        $item->likes()->create(['user_id' => $user->id]);
+        $user->like_id = $item->id;
         return redirect()->back();
     }
     public function destroy(Item $item) {

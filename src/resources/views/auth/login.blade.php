@@ -17,14 +17,11 @@
         <div class="login">
             <div class="login__inner">
                 <h2 class="login-title">ログイン</h2>
-                <form class="login-form" action="/login" method="post">
+                <form class="login-form" action="/login" method="post" novalidate>
                     @csrf
                     <div class="login-form__group">
                         <p class="login-form__group--item">ユーザー名/メールアドレス</p>
                         <input type="text" name='email' required autofocus>
-                        @error('name')
-                        <p class="error">{{$message}}</p>
-                        @enderror
                         @error('email')
                         <p class="error">{{$message}}</p>
                         @enderror

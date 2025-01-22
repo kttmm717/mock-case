@@ -10,12 +10,12 @@
     font-size: 24px;
     font-weight: bold;
 }
-.select-tag__best {
+.select-tag__sell {
     padding-left: 100px;
     text-decoration: none;
     color: #8b8b8b;
 }
-.select-tag__mylist {
+.select-tag__buy {
     padding-left: 70px;
     text-decoration: none;
     color: #8b8b8b;
@@ -72,4 +72,7 @@
     font-size: 20px;
     border-radius: 5px;
     text-decoration: none;
+}
+.selected {
+    color: red;
 }

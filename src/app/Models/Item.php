@@ -49,12 +49,15 @@ class Item extends Model
         'item_name',
         'image_url',
         'price',
+        'is_sold',
         'favorite',
         'comment',
         'item_description',
         'category_id',
         'condition_id'
     ];
+
+    // リレーション
     public function likes() {
         return $this->hasMany(Like::class);
     }
@@ -62,6 +65,18 @@ class Item extends Model
         return $this->hasMany(Comment::class);
     }
     public function purchases() {
-        return $this->hasMany(Purchase::class);
+        return $this->hasOne(Purchase::class);
+    }
+
+    //アクセサ
+    public function getIsSoldAttribute($value) {
+        return (bool) $value;
+    }
+
+    // ローカルスコープ
+    public function scopeKeywordSearch($query, $keyword) {
+        if(!empty($keyword)) {
+            $query->where('item_name', 'like', '%'.$keyword.'%');
+        }
     }
 }

@@ -36,7 +36,7 @@ class AddressRequest extends FormRequest
             'name.required' => 'お名前を入力してください',
             'zipcode.required' => '郵便番号を入力してください',
             'zipcode.regex' => '郵便番号はハイフンありの8文字で入力してください',
-            'address.required' => '住所を登録してください',
+            'address.required' => '住所を入力してください',
             'building.required' => '建物を入力してください'
         ];
     }

@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Fortify;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -39,6 +40,5 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::loginView(function() {
             return view('auth.login');
         });
-        
     }
 }

@@ -5,9 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
-use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
@@ -16,9 +14,8 @@ class RegisterController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',
-            'password' => 'required|min:8|confirmed'
-        ],[
-            'password.confirmed' => 'パスワードと確認用パスワードが一致しません'
+            'password' => 'required|min:8',
+            'password_confirmation' => 'required|confirmed'
         ]);
         $user = User::create([
             'name' => $request->name,

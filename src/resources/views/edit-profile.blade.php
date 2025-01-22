@@ -16,12 +16,15 @@
             @csrf
 
             <div class="edit-profile-form__img">
-                <img id="preview" src="{{asset('storage/' . $user->profile_image)}}" alt="プロフィール画像">
-                <input type="file" id="profile_image" name="profile_image" accept=".jpeg, .jpg, png">
+                <img id="preview" src="{{asset('storage/' . $user->profile_image)}}" alt="">
+                <input type="file" id="profile_image" name="profile_image">
                 <label for="profile_image" class="edit-profile-form__img--text">画像を選択する</label>
             </div>
+            @error('profile_image')
+                <p class="error">{{$message}}</p>
+            @enderror
 
-            <div class="edit-profile-form__group">
+            <div class="edit-profile-form__group name">
                 <p class="edit-profile-form__group--item">ユーザー名</p>
                 <input type="text" name='name' value="{{old('name', auth()->user()->name)}}">
                 @error('name')

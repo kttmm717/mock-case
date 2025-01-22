@@ -1,4 +1,4 @@
-#product-purchase {
+.product-purchase-form {
     display: flex;
     justify-content: space-between;
     width: 90%;
@@ -40,7 +40,6 @@
     padding-bottom: 30px;
 }
 .payment-app__text {
-    padding-bottom: 22px;
     font-weight: bold;
 }
 .payment-app__select {
@@ -98,7 +97,15 @@
     background-color: white;
     cursor: pointer;
 }
-.payment-method__select {
+.select {
+    padding-top: 22px;
+}
+.payment-app__select {
     width: 30%;
     padding: 5px;
+    margin-top: 22px;
+    display: block;
+}
+.error {
+    color: red;
 }

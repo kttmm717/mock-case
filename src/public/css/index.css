@@ -12,10 +12,15 @@
 }
 .select-tag__best {
     padding-left: 100px;
+    text-decoration: none;
+    color: #8b8b8b;
+    cursor: pointer;
 }
 .select-tag__mylist {
     padding-left: 70px;
-    color: red;
+    text-decoration: none;
+    color: #8b8b8b;
+    cursor: pointer;
 }
 .catalog-page {
     width: 90%;
@@ -32,4 +37,11 @@
 }
 .catalog-page__name {
     padding-top: 10px;
+}
+.selected {
+    color: red;
+}
+.sold-label {
+    color: red;
+    font-weight: bold;
 }

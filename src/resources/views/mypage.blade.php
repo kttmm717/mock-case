@@ -22,8 +22,8 @@
 </div>
 <div class="select-tag">
     <div class="select-tag__inner">
-    <a class="select-tag__best" href="{{'/mypage/?page=sell'}}">出品した商品</a>
-    <a class="select-tag__mylist" href="{{'/mypage/?page=buy'}}">購入した商品</a>
+    <a class="select-tag__sell" href="{{'/mypage/?page=sell'}}">出品した商品</a>
+    <a class="select-tag__buy" href="{{'/mypage/?page=buy'}}">購入した商品</a>
     </div>
 </div>
 

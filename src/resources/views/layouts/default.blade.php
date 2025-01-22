@@ -15,9 +15,8 @@
             <form class="header-form" action="/" method="get">
                 <input type="image" class="header-form__image" src="{{asset('images/logo.svg')}}" alt="">
             </form>
-            <form action="">
-                @csrf
-                <input class="header__input" type="text" placeholder="なにをお探しですか？">
+            <form class="search-form" action="/find" method="get">
+                <input class="search-form__input" type="text" name='keyword' placeholder="なにをお探しですか？">
             </form>
             <nav class="header-nav">
                 <ul class="header-nav-ul">
