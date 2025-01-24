@@ -56,6 +56,9 @@ class Item extends Model
         'category_id',
         'condition_id'
     ];
+    protected $casts = [
+        'category_ids' => 'array'
+    ];
 
     // リレーション
     public function likes() {
@@ -66,6 +69,9 @@ class Item extends Model
     }
     public function purchases() {
         return $this->hasOne(Purchase::class);
+    }
+    public function condition() {
+        return $this->belongsTo(Condition::class);
     }
 
     //アクセサ

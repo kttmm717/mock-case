@@ -59,12 +59,13 @@
         <h3 class="item-information">商品情報</h3>
         <div class="category">
             <span>カテゴリー</span>
-            <span>洋服</span>
-            <span>メンズ</span>
+            @foreach($categories as $category)
+            <span class="category-span">{{$category->content}}</span>
+            @endforeach
         </div>
         <div class="condition">
             <span>商品の状態</span>
-            <span>良好</span>
+            <span class="condition-span">{{$condition->content}}</span>
         </div>
 
         <h3 class="comment">コメント({{$item->comments->count()}})</h3>
@@ -73,7 +74,7 @@
             <li>
                 <div class="user">
                     <img class="user__image"
-                     src="{{$comment->user->profile_image}}" 
+                     src="{{asset('storage/' . $comment->user->profile_image)}}" 
                      alt="{{$comment->user->name}}">
                     <p class="user__name">{{$comment->user->name}}</p>
                 </div>

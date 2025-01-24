@@ -16,15 +16,15 @@
             @csrf
             <div class="cange-address-form__group">
                 <p>郵便番号</p>
-                <input type="text" name='zipcode'>
+                <input type="text" name='shipping_zipcode'>
             </div>
             <div class="cange-address-form__group">
                 <p>住所</p>
-                <input type="text" name='address'>
+                <input type="text" name='shipping_address'>
             </div>
             <div class="cange-address-form__group">
                 <p>建物名</p>
-                <input type="text" name='building'>
+                <input type="text" name='shipping_building'>
             </div>
             <button class="cange-address__btn">更新する</button>
         </form>

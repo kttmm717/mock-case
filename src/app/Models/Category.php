@@ -32,4 +32,7 @@ class Category extends Model
     public function sales() {
         return $this->belongsToMany(Sale::class, 'category_sale');
     }
+    public function items(){
+        return $this->belongsToMany(Item::class);
+}
 }

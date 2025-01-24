@@ -44,7 +44,7 @@ aside {
     padding: 20px 0;
 }
 .category {
-    padding-top: 10px;
+    padding: 10px 0;
 }
 .condition {
     padding-bottom: 20px;
@@ -131,4 +131,14 @@ li {
 .comment-form__textarea {
     border-radius: 3px;
     resize: none;
+}
+
+.category-span {
+    margin-left: 16px;
+    padding: 0 10px;
+    background-color: #ddd;
+    border-radius: 20px;
+}
+.condition-span {
+    margin-left: 24px;
 }

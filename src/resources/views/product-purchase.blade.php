@@ -40,10 +40,11 @@
                     <p>配送先</p>           
                     <a href="/purchase/address/?id={{$item->id}}" class="shipping-address__link">変更する</a>
                 </div>
-                <!-- エラー機能-->
                 <div class="shipping-address__information">
-                    <p>〒{{Auth::user()->zipcode}}</p>
-                    <p>{{Auth::user()->address}}{{Auth::user()->building}}</p>
+                    <p>〒{{session('purchase_data')['shipping_zipcode'] ?? $user->zipcode}}</p>
+                    <p>{{session('purchase_data')['shipping_address'] ?? $user->address}}
+                       {{session('purchase_data')['shipping_building'] ?? $user->building}}
+                    </p>
                 </div>
             </div>
         </div>
@@ -84,3 +85,4 @@
 </script>
 
 @endsection
+

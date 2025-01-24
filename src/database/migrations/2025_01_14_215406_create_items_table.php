@@ -22,7 +22,7 @@ class CreateItemsTable extends Migration
             $table->integer('favorite')->nullable();
             $table->text('comment_id')->nullable();
             $table->text('item_description');
-            $table->foreignId('category_id')->nullable()->constrained()->cascadeOnDelete();
+            $table->json('category_ids')->nullable();
             $table->foreignId('condition_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });

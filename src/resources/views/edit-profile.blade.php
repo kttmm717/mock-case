@@ -14,7 +14,6 @@
         <h2 class="edit-profile-title">プロフィール設定</h2>
         <form class="edit-profile-form" action="/mypage/profile/update" method="post" enctype="multipart/form-data">
             @csrf
-
             <div class="edit-profile-form__img">
                 <img id="preview" src="{{asset('storage/' . $user->profile_image)}}" alt="">
                 <input type="file" id="profile_image" name="profile_image">
