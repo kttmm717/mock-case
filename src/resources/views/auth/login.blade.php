@@ -15,6 +15,9 @@
     </header>
     <main>
         <div class="login">
+            @if(session('status'))
+            <p class="status-message">{{session('status')}}</p>
+            @endif
             <div class="login__inner">
                 <h2 class="login-title">ログイン</h2>
                 <form class="login-form" action="/login" method="post" novalidate>

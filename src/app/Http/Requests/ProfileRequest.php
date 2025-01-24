@@ -23,7 +23,7 @@ class ProfileRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        return [           
             'profile_image' => 'mimes:jpeg,png'
         ];
     }

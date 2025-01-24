@@ -40,13 +40,17 @@ class ProfileController extends Controller
         }
         /** @var User $user */
         $user = Auth::user();
-        $user->update([
-            'profile_image' => $profile_image,
+        $data = [
             'name' => $addressrequest->name,
             'zipcode' => $addressrequest->zipcode,
             'address' => $addressrequest->address,
             'building' => $addressrequest->building
-        ]);
+        ];
+        if(isset($profile_image)) {
+            $data['profile_image'] = $profile_image;
+        }
+        $user->update($data);
+
         return redirect('/mypage');
     }
 }

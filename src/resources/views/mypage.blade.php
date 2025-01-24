@@ -12,7 +12,7 @@
 <div class="user">
     <div class="user__inner">
         <div class="user__information">
-            <img src="{{asset('storage/' . $user->profile_image)}}" alt="プロフィール画像">
+            <img src="{{asset('storage/' . $user->profile_image)}}" alt="">
             <p>{{$user->name}}</p>
         </div>
         <div class="user__text">
