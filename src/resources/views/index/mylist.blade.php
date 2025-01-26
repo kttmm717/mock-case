@@ -11,24 +11,27 @@
 @section('content')
 <div class="select-tag">
     <div class="select-tag__inner">
-        <a class="select-tag__best" href="{{'/?page=best'}}">おすすめ</a>
-        <a class="select-tag__mylist" href="{{'/?page=mylist'}}">マイリスト</a>
+    <a class="select-tag__best" href="{{ url('/find?page=best&keyword=' . request('keyword')) }}">おすすめ</a>
+    <a class="select-tag__mylist" href="{{ '/?page=mylist' }}">マイリスト</a>
     </div>
 </div>
 <div class="catalog-page">
+@if(isset($likes) && count($likes) > 0)
+        
     @foreach($likes as $like)
     <div class="catalog-page__group">
         <div class="catalog-page__img">
-            <img src="{{$like->item->image}}" alt="商品画像">
+            <img src="{{ $like->item->image }}" alt="商品画像">
         </div>
         <div class="catalog-page__name">
-            {{$like->item->item_name}}
+            {{ $like->item->item_name }}
         </div>
         @if($like->item->is_sold)
         <p class="sold-label">Sold</p>
         @endif
     </div>
     @endforeach
+@endif
 </div>
 
 <script>

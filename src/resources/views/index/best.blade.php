@@ -11,8 +11,8 @@
 @section('content')
 <div class="select-tag">
     <div class="select-tag__inner">
-        <a class="select-tag__best" href="{{'/?page=best'}}">おすすめ</a>
-        <a class="select-tag__mylist" href="{{'/?page=mylist'}}">マイリスト</a>
+        <a class="select-tag__best" href="{{ '/?page=best' }}">おすすめ</a>
+        <a class="select-tag__mylist" href="{{ url('/find?page=mylist&keyword=' . request('keyword')) }}">マイリスト</a>
     </div>
 </div>
 <div class="catalog-page">

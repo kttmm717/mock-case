@@ -45,3 +45,8 @@
     color: red;
     font-weight: bold;
 }
+.select-tag__inner a.active {
+    font-weight: bold;
+    color: #ff6600; /* 目立つ色に変更 */
+    border-bottom: 2px solid #ff6600; /* 下線をつける */
+}

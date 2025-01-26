@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Models\Category;
 use App\Models\Condition;
 use App\Models\Sale;
+use App\Models\Like;
 use Illuminate\Support\Facades\Session;
 
 class ItemController extends Controller
@@ -102,7 +103,22 @@ class ItemController extends Controller
         return redirect('/mypage');
     }
     public function search(Request $request) {
-        $items = Item::keywordSearch($request->keyword)->get();
-        return view('index', compact('items'));
+        $keyword = $request->keyword;
+        $page = $request->query('page', 'best');
+        $userId = auth()->id();
+
+        if ($page == 'mylist') {
+            $likes = Like::with('item')
+                ->where('user_id', $userId)
+                ->whereHas('item', function ($query) use ($keyword) {
+                    $query->where('item_name', 'LIKE', "%{$keyword}%");
+                })
+                ->get();
+            return view("index.mylist", compact('likes', 'keyword'));
+        } else {
+            $items = Item::keywordSearch($keyword)->get();
+            return view("index.best", compact('items', 'keyword'));
+        }
+        
     }
 }

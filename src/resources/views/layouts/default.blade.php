@@ -16,7 +16,8 @@
                 <input type="image" class="header-form__image" src="{{asset('images/logo.svg')}}" alt="">
             </form>
             <form class="search-form" action="/find" method="get">
-                <input class="search-form__input" type="text" name='keyword' placeholder="なにをお探しですか？">
+                <input class="search-form__input" type="text" name='keyword' value="{{request('keyword')}}" placeholder="なにをお探しですか？">
+                <input type="hidden" name="page" value="{{ request('page', 'best') }}">
             </form>
             <nav class="header-nav">
                 <ul class="header-nav-ul">
