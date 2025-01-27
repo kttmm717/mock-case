@@ -44,9 +44,9 @@ Route::delete('/posts/{item}/like', [LikeController::class, 'destroy'])->middlew
 
 Route::post('/items/{item}/comments', [CommentController::class, 'store'])->middleware('auth');
 
-Route::post('/create-checkout-session', [PaymentController::class, 'createCheckoutSession']);
-
-Route::post('/purchase-procedure', [PurchaseController::class, 'purchase']);
+Route::post('/purchase', [PurchaseController::class, 'purchase'])->name('purchase');
+Route::get('/purchase/success', [PurchaseController::class, 'success'])->name('purchase.success');
+Route::get('/purchase/cancel', [PurchaseController::class, 'cancel'])->name('purchase.cancel');
 
 
 

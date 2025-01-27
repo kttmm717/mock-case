@@ -10,7 +10,7 @@
 
 @section('content')
 <div id="product-purchase">
-    <form class="product-purchase-form" action="/purchase-procedure" method="post">
+    <form class="product-purchase-form" action="{{ route('purchase') }}" method="post">
     @csrf
         <div class="left">
             <div class="item__information">
@@ -30,7 +30,7 @@
                 <div class="select">
                     <select class="payment-app__select" name="paymentMethod" v-model="paymentMethod">
                         <option value="">選択してください</option>
-                        <option value="convenience">コンビニ支払い</option>
+                        <option value="konbini">コンビニ支払い</option>
                         <option value="card">カード支払い</option>
                     </select>
                 </div>
@@ -57,7 +57,7 @@
                 <tr class="purchase-table__row">
                     <th class="purchase-table__header">支払い方法</th>
                     <td class="purchase-table__date">
-                        <div v-if="paymentMethod === 'convenience'">コンビニ支払い</div>
+                        <div v-if="paymentMethod === 'konbini'">コンビニ支払い</div>
                         <div v-if="paymentMethod === 'card'">カード支払い</div>
                     </td>
                 </tr>

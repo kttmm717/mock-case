@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ExhibitionRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Item;
-use App\Models\Payment;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\Condition;
@@ -51,9 +50,8 @@ class ItemController extends Controller
     public function procedureView(Request $request) {
         if(Auth::check()) {
             $item = Item::find($request->id);
-            $payments = Payment::all();
             $user = Auth::user();
-            return view('product-purchase', compact('item', 'payments', 'user'));
+            return view('product-purchase', compact('item', 'user'));
         } else {
             return view('auth.login');
         }
@@ -65,15 +63,22 @@ class ItemController extends Controller
     public function updateAddress(Request $request) {
         /** @var User $user */
         $user = Auth::user();
-        $item = Item::find($request->id);
+
+        $validated = $request->validate([
+            'shipping_zipcode' => 'nullable|string|max:10',
+            'shipping_address' => 'nullable|string|max:255',
+            'shipping_building' => 'nullable|string|max:255',
+        ]);
+
+        $item = Item::findOrFail($request->id);
         $form = $request->only(['shipping_zipcode', 'shipping_address', 'shipping_building']);
         
         $purchaseData = [
             'user_id' => $user->id,
             'item_id' => $item->id,
-            'shipping_zipcode' => $form['shipping_zipcode'] ?? $user->zipcode,
-            'shipping_address' => $form['shipping_address'] ?? $user->address,
-            'shipping_building' => $form['shipping_building'] ?? $user->building
+            'shipping_zipcode' => $validated['shipping_zipcode'] ?? $user->zipcode,
+            'shipping_address' => $validated['shipping_address'] ?? $user->address,
+            'shipping_building' => $validated['shipping_building'] ?? $user->building
         ];
         
         Session::put('purchase_data', $purchaseData);
