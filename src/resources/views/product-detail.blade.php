@@ -86,7 +86,9 @@
                 @csrf
                 <p class="comment__textarea">商品へのコメント</p>
                 <textarea class="comment-form__textarea" name="content"></textarea>
-                <!-- エラー機能 -->
+                @error('content')
+                <p class='error'>{{$message}}</p>
+                @enderror
                 <button class="submit-comment">コメントを送信する</button>
             </form>
         </ul>

@@ -13,7 +13,7 @@ class ProfileController extends Controller
 {
     public function mypageView(Request $request) {
         if(Auth::check()) {
-            $page = $request->query('page');
+            $page = $request->query('page', 'sell');
             $user = auth()->user();
 
             if($page === 'sell') {

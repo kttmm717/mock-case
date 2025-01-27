@@ -24,7 +24,7 @@
                     <li class="header-nav-ul__li">
                         <form class="logout__form" action="/logout" method="post">
                             @csrf
-                            <button>ログアウト</button>
+                            <button class="logout__link">ログアウト</button>
                         </form>
                     </li>
                     <li class="header-nav-ul__li"><a class="mypage__link" href="/mypage">マイぺージ</a></li>

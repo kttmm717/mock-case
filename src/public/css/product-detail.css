@@ -142,3 +142,6 @@ li {
 .condition-span {
     margin-left: 24px;
 }
+.error {
+    color: red;
+}
