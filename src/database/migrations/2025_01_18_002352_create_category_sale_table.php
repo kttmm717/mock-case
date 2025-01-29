@@ -16,7 +16,7 @@ class CreateCategorySaleTable extends Migration
         Schema::create('category_sale', function (Blueprint $table) {
             $table->id();
             $table->foreignId('category_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('sale_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('item_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

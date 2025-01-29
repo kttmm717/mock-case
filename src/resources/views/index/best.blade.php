@@ -16,19 +16,21 @@
     </div>
 </div>
 <div class="catalog-page">
-    @foreach($items as $item)
-    <div class="catalog-page__group">
-        <div class="catalog-page__img">
-            <img src="{{$item->image}}" alt="商品画像">
+    <div class="catalog-page__inner">
+        @foreach($items as $item)
+        <div class="catalog-page__group">
+            <div class="catalog-page__img">
+            <img src="{{ strpos($item->image, 'images') !== false ? asset('storage/' . $item->image) : $item->image }}" alt="商品画像">
+            </div>
+            <div class="catalog-page__name">
+                {{$item->item_name}}
+            </div>
+            @if($item->is_sold)
+            <p class="sold-label">Sold</p>
+            @endif
         </div>
-        <div class="catalog-page__name">
-            {{$item->item_name}}
-        </div>
-        @if($item->is_sold)
-        <p class="sold-label">Sold</p>
-        @endif
+        @endforeach
     </div>
-    @endforeach
 </div>
 
 <script>

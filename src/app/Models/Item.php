@@ -46,8 +46,9 @@ class Item extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'item_name',
-        'image_url',
+        'image',
         'price',
         'is_sold',
         'favorite',
@@ -72,6 +73,9 @@ class Item extends Model
     }
     public function condition() {
         return $this->belongsTo(Condition::class);
+    }
+    public function categories() {
+        return $this->belongsToMany(Category::class, 'category_sale');
     }
 
     //アクセサ

@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\AddressRequest;
 use App\Models\Purchase;
+use App\Models\Item;
 use App\Http\Requests\ProfileRequest;
 
 class ProfileController extends Controller
@@ -17,7 +18,9 @@ class ProfileController extends Controller
             $user = auth()->user();
 
             if($page === 'sell') {
-                $items = $user->sales;
+                $items = Item::with(['condition', 'categories'])
+                    ->where('user_id', auth()->id())
+                    ->get();
                 return view('mypage.sell', compact('items', 'user'));
             } elseif($page === 'buy') {
                 /** @var \Illminate\Database\Eloquent\Collection|Purchase[] $purchases */

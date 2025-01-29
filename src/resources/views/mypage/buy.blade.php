@@ -27,16 +27,18 @@
     </div>
 </div>
 <div class="catalog-page">
-    @foreach($purchases as $purchase)
-    <div class="catalog-page__group">
-        <div class="catalog-page__img">
-            <img src="{{$purchase->item->image}}" alt="商品画像">
+    <div class="catalog-page__inner">
+        @foreach($purchases as $purchase)
+        <div class="catalog-page__group">
+            <div class="catalog-page__img">
+                <img src="{{$purchase->item->image}}" alt="商品画像">
+            </div>
+            <div class="catalog-page__name">
+                {{$purchase->item->item_name}}
+            </div>
         </div>
-        <div class="catalog-page__name">
-            {{$purchase->item->item_name}}
-        </div>
+        @endforeach
     </div>
-    @endforeach
 </div>
 
 <script>

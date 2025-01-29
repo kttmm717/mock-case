@@ -24,7 +24,9 @@ class ItemController extends Controller
                 $likes = $user->likes()->with('item')->get();
                 return view('index.mylist', compact('likes'));
             }else {
-                $items = Item::all();
+                $items = Item::with(['condition', 'categories'])
+                    ->where('user_id', '!=', auth()->id())
+                    ->get();
                 return view('index.best', compact('items'));
             }
         } else {
@@ -43,8 +45,7 @@ class ItemController extends Controller
         $item = Item::find($request->id);
         $conditionId = $item->condition_id;
         $condition = Condition::find($conditionId);
-        $categoryIds = $item->category_ids;
-        $categories = Category::find($categoryIds);
+        $categories = $item->categories;
         return view('product-detail', compact('item', 'condition', 'categories'));
     }
     public function procedureView(Request $request) {
@@ -95,16 +96,16 @@ class ItemController extends Controller
         }
     }
     public function sale(ExhibitionRequest $request) {
-        $image = $request->file('image')->store('item_images', 'public');
-        $sale = Sale::create([
+        $item = Item::create([
             'user_id' => auth()->id(),
-            'image' => $image,
+            'image' => $request->file('image')->store('images', 'public'),
             'condition_id' => $request->condition_id,
-            'name' => $request->name,
-            'content' => $request->content,
+            'item_name' => $request->name,
+            'item_description' => $request->content,
             'price' => $request->price
         ]);
-        $sale->categories()->attach($request->categories);
+        $item->categories()->attach($request->categories);
+        
         return redirect('/mypage');
     }
     public function search(Request $request) {

@@ -26,7 +26,7 @@ class AuthenticatedSessionController extends Controller
             return redirect('/');
         } else {
             throw ValidationException::withMessages([
-                'email' => ['ログイン情報が登録されていません。']
+                'email' => ['ログイン情報が登録されていません']
             ]);
         }       
     }

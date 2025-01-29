@@ -23,10 +23,14 @@
     cursor: pointer;
 }
 .catalog-page {
-    width: 90%;
+    max-width: 1230px;
     margin: 40px auto;
+}
+.catalog-page__inner {
+    width: 90%;
     display: flex;
     flex-wrap: wrap;
+    margin: 0 auto;
 }
 .catalog-page__group {
     width: 25%;

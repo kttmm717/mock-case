@@ -12,7 +12,7 @@
 <div class="product-detail">
     <aside>
         <div class="aside__image">
-            <img src="{{$item->image}}" alt="">
+        <img src="{{ strpos($item->image, 'images') !== false ? asset('storage/' . $item->image) : $item->image }}" alt="商品画像">
         </div>
     </aside>
     <div class="main">

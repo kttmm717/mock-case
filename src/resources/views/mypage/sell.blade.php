@@ -27,16 +27,18 @@
     </div>
 </div>
 <div class="catalog-page">
-    @foreach($items as $item)
-    <div class="catalog-page__group">
-        <div class="catalog-page__img">
-            <img src="{{asset('storage/' . $item->image)}}" alt="商品画像">
+    <div class="catalog-page__inner">
+        @foreach($items as $item)
+        <div class="catalog-page__group">
+            <div class="catalog-page__img">
+                <img src="{{asset('storage/' . $item->image)}}" alt="商品画像">
+            </div>
+            <div class="catalog-page__name">
+                {{$item->item_name}}
+            </div>
         </div>
-        <div class="catalog-page__name">
-            {{$item->name}}
-        </div>
+        @endforeach
     </div>
-    @endforeach
 </div>
 
 <script>
