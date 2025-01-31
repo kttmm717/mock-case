@@ -28,7 +28,7 @@
                     @csrf
                     @method('delete')
                     <button type="submit">
-                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star liked"></i>
                     </button>
                 </form>
             @else

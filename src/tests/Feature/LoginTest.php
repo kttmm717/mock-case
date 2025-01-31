@@ -11,7 +11,7 @@ class LoginTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
+    /** @test */  //メールアドレスが入力されていない場合、バリデーションメッセージが表示されるかテスト
     public function email_is_required() {
         $response = $this->post('/login', [
             'email' => '',
@@ -22,7 +22,7 @@ class LoginTest extends TestCase
         ]);
     }
 
-    /** @test */
+    /** @test */  //パスワードが入力されていない場合、バリデーションメッセージが表示されるかテスト
     public function password_is_required() {
         $response = $this->post('/login', [
             'email' => 'test@example.com',
@@ -33,7 +33,7 @@ class LoginTest extends TestCase
         ]);
     }
 
-    /** @test */
+    /** @test */  //入力情報が間違っている場合、バリデーションメッセージが表示されるかテスト
     public function unregistered_user_cannot_login() {
         $response = $this->post('/login', [
             'email' => 'notexist@example.com',
@@ -44,7 +44,7 @@ class LoginTest extends TestCase
         ]);
     }
 
-    /** @test */
+    /** @test */  //正しい情報が入力された場合、ログイン処理が実行されるかテスト
     public function login_successds_with_correct_information() {
         User::factory()->create([
             'email' => 'test@example.com',

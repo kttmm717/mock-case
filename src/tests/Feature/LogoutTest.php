@@ -11,7 +11,7 @@ class LogoutTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
+    /** @test */  //正常にログアウトできるかテスト
     public function user_can_logout_successfully() {
         $user = User::factory()->create([
             'email' => 'test@example.com',

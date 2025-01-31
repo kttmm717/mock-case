@@ -6,6 +6,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\Item;
+use App\Models\User;
 use Database\Seeders\ConditionsTableSeeder;
 use Database\Seeders\CategoriesTableSeeder;
 
@@ -44,8 +45,29 @@ class TopTest extends TestCase
         $response->assertSee('Sold');
     }
 
-    /** @test */  //自分が出品した商品がトップ画面で表示されないかテスト
+    /** @test */  //自分が出品した商品はトップ画面で表示されないかテスト
     public function own_items_are_not_displayed_on_top_page() {
-        
+        $user = User::factory()->create();
+        $otherUser = User::factory()->create();
+
+        Item::factory()->create([
+            'user_id' => $user->id,
+            'item_name' => '自分のアイテム'
+        ]);
+
+        Item::factory()->create([
+            'user_id' => $otherUser,
+            'item_name' => '他のユーザーのアイテム'
+        ]);
+
+        /**@var User $user */
+        $this->actingAs($user);
+
+        $response = $this->get('/');
+
+        $response->assertSee('他のユーザーのアイテム');
+        $response->assertDontSee('自分のアイテム');
     }
 }
+
+

@@ -116,13 +116,16 @@ class ItemController extends Controller
         if ($page == 'mylist') {
             $likes = Like::with('item')
                 ->where('user_id', $userId)
-                ->whereHas('item', function ($query) use ($keyword) {
-                    $query->where('item_name', 'LIKE', "%{$keyword}%");
+                ->whereHas('item', function ($query) use ($keyword, $userId) {
+                    $query->where('item_name', 'LIKE', "%{$keyword}%")
+                          ->where('user_id', '!=', $userId);
                 })
                 ->get();
             return view("index.mylist", compact('likes', 'keyword'));
         } else {
-            $items = Item::keywordSearch($keyword)->get();
+            $items = Item::keywordSearch($keyword)
+                ->where('user_id', '!=', auth()->id())
+                ->get();
             return view("index.best", compact('items', 'keyword'));
         }
         

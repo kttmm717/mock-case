@@ -21,7 +21,7 @@
             @foreach($likes as $like)
             <div class="catalog-page__group">
                 <div class="catalog-page__img">
-                    <img src="{{ $like->item->image }}" alt="商品画像">
+                <img src="{{ strpos($like->item->image, 'images') !== false ? asset('storage/' . $like->item->image) : $like->item->image }}" alt="商品画像">
                 </div>
                 <div class="catalog-page__name">
                     {{ $like->item->item_name }}
