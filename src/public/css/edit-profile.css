@@ -6,7 +6,7 @@
     background-color: black;
 }
 .header__inner {
-    max-width: 1230px;
+    max-width: 1540px;
     margin: 0 auto;
     padding: 15px;
     display: flex;
@@ -50,7 +50,7 @@
 }
 
 .edit-profile {
-    max-width: 1230px;
+    max-width: 1540px;
     margin: 0 auto;
 }
 .edit-profile__inner {

@@ -109,3 +109,9 @@
 .error {
     color: red;
 }
+
+@media(max-width: 851px) {
+    .payment-app__select {
+        width: 50%;
+    }
+}

@@ -16,8 +16,8 @@
         </div>
     </aside>
     <div class="main">
-        <h2 class="item__name">{{$item['item_name']}}</h2>
-        <p class="brand-name">ブランド名</p>
+        <h2 class="item__name">{{$item->item_name}}</h2>
+        <p class="brand-name">{{$item->brand_name}}</p>
         <p class="price">&yen;{{number_format($item->price)}} <span class="price__span">(税込)</span></p>
         
         <div class="icon">

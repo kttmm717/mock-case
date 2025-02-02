@@ -6,13 +6,13 @@
     background-color: black;
 }
 .header__inner {
-    max-width: 1230px;
+    max-width: 1540px;
     margin: 0 auto;
     padding: 15px;
 }
 
 .login {
-    max-width: 1230px;
+    max-width: 1540px;
     margin: 0 auto;
 }
 .login__inner {

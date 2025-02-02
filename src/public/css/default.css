@@ -6,7 +6,7 @@
     background-color: black;
 }
 .header__inner {
-    max-width: 1230px;
+    max-width: 1540px;
     margin: 0 auto;
     padding: 15px;
     display: flex;
@@ -26,6 +26,7 @@
     background-color: black;
     font-size: 17px;
     border: none;
+    cursor: pointer;
 }
 .mypage__link {
     color: white;
@@ -60,6 +61,16 @@
     padding: 5px 15px;
     display: inline-block;
 }
-.logout__link {
-    cursor: pointer;
+
+
+@media(max-width: 851px) {
+    .logout__form button {
+        font-size: 12px;
+    }
+    .mypage__link {
+        font-size: 12px;
+    }
+    .listing__link {
+        font-size: 12px;
+    }
 }

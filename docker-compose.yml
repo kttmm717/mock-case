@@ -10,11 +10,15 @@ services:
       - ./src:/var/www/
     depends_on:
       - php
+    networks:
+      - mock-case_selenium_network
 
   php:
     build: ./docker/php
     volumes:
       - ./src:/var/www/
+    networks:
+      - mock-case_selenium_network
 
   mysql:
     image: mysql:8.0.26
@@ -28,6 +32,8 @@ services:
     volumes:
       - ./docker/mysql/data:/var/lib/mysql
       - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+    networks:
+      - mock-case_selenium_network
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -40,6 +46,8 @@ services:
       - mysql
     ports:
       - 8080:80
+    networks:
+      - mock-case_selenium_network
   
   mail:
     image: mailhog/mailhog
@@ -47,3 +55,22 @@ services:
     ports:
         - "1025:1025"
         - "8025:8025"
+    networks:
+      - mock-case_selenium_network
+  
+  selenium:
+    image: selenium/standalone-chrome
+    ports:
+      - "4444:4444"  
+    environment:
+      - SCREEN_WIDTH=1920
+      - SCREEN_HEIGHT=1080
+      - SCREEN_DEPTH=24
+      - VNC_PASSWORD=secret
+    networks:
+      - mock-case_selenium_network
+
+networks:
+  mock-case_selenium_network:
+    name: mock-case_selenium_network
+    driver: bridge
