@@ -15,9 +15,18 @@
 - php artisan db:seed  
 
 ## 使用技術
-- PHP7.4.9
 - Laravel8.83.8
+- nginx1.21.1
+- PHP7.4.9
 - MySQL8.0.26
+- phpmyadmin
+- mailhog
+- selenium
+- Docker
+- Dockerネットワーク
+- HTML5
+- CSS3
+- JavaScript
 
 ## 開発環境
 - トップ画面：http://localhost/

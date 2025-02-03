@@ -63,7 +63,7 @@ class ListingTest extends TestCase
 
         $itemId = DB::table('items')->latest('id')->first()->id; // 最新の item_id を取得
         foreach ($categories as $category) {
-            $this->assertDatabaseHas('category_sale', [
+            $this->assertDatabaseHas('category_item', [
                 'item_id' => $itemId,
                 'category_id' => $category->id
             ]);

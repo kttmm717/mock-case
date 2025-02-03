@@ -9,7 +9,6 @@ use App\Models\Item;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\Condition;
-use App\Models\Sale;
 use App\Models\Like;
 use Illuminate\Support\Facades\Session;
 
