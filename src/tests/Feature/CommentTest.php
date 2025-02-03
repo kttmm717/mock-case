@@ -30,14 +30,12 @@ class CommentTest extends TestCase
         $item = Item::factory()->create();
 
         $initialCommentCount = Comment::where('item_id', $item->id)->count();
-        //追加前のコメント数を$initialCommentCountに格納
 
         $comment = [
             'user_id' => $user->id,
             'item_id' => $item->id,
             'content' => 'これはテストコメントです'
         ];
-        //コメント投稿
 
         $response = $this->post("/items/{$item->id}/comments", $comment);
 
@@ -46,17 +44,13 @@ class CommentTest extends TestCase
             'item_id' => $item->id,
             'content' => 'これはテストコメントです'
         ]);
-        //データベースにコメントが追加されたことを確認
 
         $afterCommentCount = Comment::where('item_id', $item->id)->count();
-        //投稿後のコメント数を$afterCommentCountに格納
 
         $this->assertEquals($initialCommentCount+1, $afterCommentCount);
-        //コメントが増加してるか確認
 
         $response = $this->get("item/?id={$item->id}");
         $response->assertSee("{$afterCommentCount}");
-        //コメント数がページに表示されているか確認
     }
 
     /** @test */  //ログイン前ユーザーはコメント送信ができないかテスト
