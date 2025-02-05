@@ -16,7 +16,7 @@
             @csrf
             <div class="edit-profile-form__img">
                 <img id="preview" src="{{asset('storage/' . $user->profile_image)}}" alt="">
-                <input type="file" id="profile_image" name="profile_image">
+                <input type="file" id="profile_image" name="profile_image" accept="image/jpeg, image/png">
                 <label for="profile_image" class="edit-profile-form__img--text">画像を選択する</label>
             </div>
             @error('profile_image')
@@ -80,3 +80,4 @@
 </script>
 
 @endsection
+

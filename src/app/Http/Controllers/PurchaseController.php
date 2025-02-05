@@ -31,28 +31,23 @@ class PurchaseController extends Controller
         //return redirect($checkoutSession->url);を実行するとstripe決済画面へ移動する
             
             'payment_method_types' => ['card', 'konbini'],
-            //どの支払い方法を許可するかを指定
 
-            'line_items' => [[  //購入商品の情報
+            'line_items' => [[  
                 'price_data' => [
                     'currency' => 'jpy',
-                    'product_data' => [  //商品情報（名前等）
+                    'product_data' => [  
                         'name' => $item->item_name,
                     ],
                     'unit_amount' => $item->price, 
                 ],
-                'quantity' => 1,  //購入数
+                'quantity' => 1,  
             ]],
 
             'mode' => 'payment',
-            //決済モードの設定
-            //payment：一括払い（通常）
 
             'success_url' => route('purchase.success', ['item_id' => $item->id]),
-            //success_url：購入成功時のページ
 
             'cancel_url' => route('purchase.cancel'),
-            //cancel_url：ユーザーが決済をキャンセルした場合のページ
 
         ]);
 

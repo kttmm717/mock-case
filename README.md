@@ -32,6 +32,7 @@
 - トップ画面：http://localhost/
 - ユーザー登録　http://localhost/register
 - phpMyAdmin：http://localhost:8080/
+- mailhog：http://localhost:8025/
 
 ## ER図
 ![ER Diagram](er.png)

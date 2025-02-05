@@ -76,7 +76,7 @@ class Item extends Model
         return $this->belongsTo(Condition::class);
     }
     public function categories() {
-        return $this->belongsToMany(Category::class, 'category_sale');
+        return $this->belongsToMany(Category::class, 'category_item');
     }
 
     //アクセサ

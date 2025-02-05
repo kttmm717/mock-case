@@ -30,8 +30,8 @@
                 <div class="select">
                     <select class="payment-app__select" name="paymentMethod" v-model="paymentMethod">
                         <option value="">選択してください</option>
-                        <option value="konbini">コンビニ支払い</option>
-                        <option value="card">カード支払い</option>
+                        <option class="payment-app__select--option" value="konbini">コンビニ支払い</option>
+                        <option class="payment-app__select--option" value="card">カード支払い</option>
                     </select>
                 </div>
             </div>
@@ -82,6 +82,33 @@
             }
         }
     });
+
+    function removeFirstOptionOnSelect() {
+        const select = document.querySelector(".payment-app__select");
+        const firstOption = select.querySelector("option[value='']");
+
+        if (firstOption && select.value === "") {
+            firstOption.remove(); 
+        }
+    }
+
+    function updateSelectedOption() {
+        const select = document.querySelector(".payment-app__select");
+        const options = select.options;
+
+        for (let option of options) {
+            option.textContent = option.textContent.replace(/^✔ /, "");
+        }
+
+        if (select.value !== "" && select.selectedIndex >= 0) {
+            options[select.selectedIndex].textContent = "✔ " + options[select.selectedIndex].textContent;
+        }
+    }
+
+    document.querySelector(".payment-app__select").addEventListener("mousedown", removeFirstOptionOnSelect);
+    document.querySelector(".payment-app__select").addEventListener("change", updateSelectedOption);
+
+    updateSelectedOption();
 </script>
 
 @endsection

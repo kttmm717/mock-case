@@ -22,7 +22,7 @@
             <div class="sell__img">
                 <div class="sell__img--area">
                     <label for="file-upload">画像を選択する</label>
-                    <input type="file" id='file-upload' name='image' accept=".jpeg, .jpg, png">
+                    <input type="file" id='file-upload' name='image'accept="image/jpeg, image/png">
                 </div>
             </div>
 
@@ -52,7 +52,7 @@
             <select class="item-condition__select" name="condition_id">
                 <option value="">選択してください</option>
                 @foreach($conditions as $condition)
-                <option value="{{$condition->id}}" {{old('condition_id') == $condition->id ? 'selected' : ''}}>
+                <option class="item-condition__select--option" value="{{$condition->id}}" {{old('condition_id') == $condition->id ? 'selected' : ''}}>
                     {{$condition->content}}
                 </option>
                 @endforeach
@@ -85,6 +85,75 @@
         </form>
     </div>
 </div>
+
+<script>
+    function adjustLastRowAlignment() {
+        const container = document.querySelector(".sell__category");
+        const items = Array.from(container.children).filter(el => el.matches("label")); // ラベルのみ取得
+
+        if (items.length === 0) return;
+
+        const existingDummy = container.querySelector(".dummy-space");
+        if (existingDummy) {
+            existingDummy.remove();
+        }
+
+        items.forEach(item => item.style.margin = "10px 5px");
+
+        const containerWidth = container.clientWidth;
+        
+        let rowItems = [];
+        let rowWidth = 0;
+        
+        for (const item of items) {
+            const itemWidth = item.offsetWidth + 10; 
+            if (rowWidth + itemWidth > containerWidth) {
+                rowItems = [];
+                rowWidth = 0;
+            }
+            rowItems.push(item);
+            rowWidth += itemWidth;
+        }
+        if (rowItems.length > 0) {
+            const dummy = document.createElement("div");
+            dummy.classList.add("dummy-space");
+            dummy.style.flex = "1 1 auto"; 
+            dummy.style.visibility = "hidden";
+            container.appendChild(dummy);
+        }
+    }
+    window.addEventListener("resize", adjustLastRowAlignment);
+
+    adjustLastRowAlignment();
+
+    function removeFirstOptionOnSelect() {
+        const select = document.querySelector(".item-condition__select");
+        const firstOption = select.querySelector("option[value='']");
+
+        if (firstOption && select.value === "") {
+            firstOption.remove(); 
+        }
+    }
+
+    function updateSelectedOption() {
+        const select = document.querySelector(".item-condition__select");
+        const options = select.options;
+
+        for (let option of options) {
+            option.textContent = option.textContent.replace(/^✔ /, "");
+        }
+
+        if (select.value !== "" && select.selectedIndex >= 0) {
+            options[select.selectedIndex].textContent = "✔ " + options[select.selectedIndex].textContent;
+        }
+    }
+
+    document.querySelector(".item-condition__select").addEventListener("mousedown", removeFirstOptionOnSelect);
+    document.querySelector(".item-condition__select").addEventListener("change", updateSelectedOption);
+
+    updateSelectedOption();
+
+</script>
 
 
 @endsection
