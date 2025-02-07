@@ -42,7 +42,7 @@ class ItemDetailTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee($item->image);
         $response->assertSee($item->item_name);        
-        $response->assertSee($item->price);
+        $response->assertSee(number_format($item->price));
         $response->assertSee($item->likes->count());
         $response->assertSee($item->comments->count());
         $response->assertSee($item->item_description);

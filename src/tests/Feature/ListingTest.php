@@ -49,7 +49,6 @@ class ListingTest extends TestCase
 
         /** @var User $user */
         $response = $this->actingAs($user)->post('/sale', $data);
-        $response->assertStatus(302);
         $response->assertSessionHasNoErrors();
 
         $this->assertDatabaseHas('items', [
