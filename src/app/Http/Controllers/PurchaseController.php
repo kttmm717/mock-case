@@ -9,25 +9,22 @@ use App\Models\Item;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Stripe\Checkout\Session as StripeSession;
+use App\Http\Requests\PurchaseRequest;
 
 class PurchaseController extends Controller
 {
-    public function purchase(Request $request) {
+    public function purchase(PurchaseRequest $request) {
         /**@var User $user */
         $user = Auth::user();
         $item = Item::find($request->item_id);
 
         $purchaseData = session('purchase_data', []);
-        $purchaseData['payment_method'] = $request->paymentMethod; // 保存
+        $purchaseData['payment_method'] = $request->paymentMethod; 
         Session::put('purchase_data', $purchaseData);
 
         \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
 
         $checkoutSession = StripeSession::create([
-        //stripeの決済ページを作成する関数
-        //createメソッドに決済の詳細情報を渡すとstripeの決済ページのURLが返ってくる
-        //return redirect($checkoutSession->url);を実行するとstripe決済画面へ移動する
-            
             'payment_method_types' => ['card', 'konbini'],
 
             'line_items' => [[  
