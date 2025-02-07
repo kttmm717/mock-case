@@ -23,6 +23,7 @@ class ItemFactory extends Factory
         return [
             'user_id' => $user->id,
             'item_name' => $this->faker->word(),
+            'brand_name' => $this->faker->word(),
             'image' => 'https://via.placeholder.com/200',
             'price' => $this->faker->numberBetween(100,10000),
             'is_sold' => $this->faker->boolean(),

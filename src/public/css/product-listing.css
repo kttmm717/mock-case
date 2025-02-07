@@ -75,7 +75,8 @@ input[type="checkbox"]:checked + .category-label {
     padding-top: 30px;
 }
 .item-name__input,
-.item-price__input {
+.item-price__input,
+.brand-name__input {
     width: 100%;
     padding: 10px;
     border: 1px solid #a0a0a0;

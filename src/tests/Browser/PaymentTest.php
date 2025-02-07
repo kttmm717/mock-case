@@ -21,6 +21,7 @@ class PaymentTest extends DuskTestCase
             $browser->loginAs($user)
                 ->visit("/purchase?id={$item->id}")
                 ->select('paymentMethod', 'konbini')
+                ->pause(500)
                 ->waitForText('コンビニ支払い')
                 ->assertSee('コンビニ支払い');
         });

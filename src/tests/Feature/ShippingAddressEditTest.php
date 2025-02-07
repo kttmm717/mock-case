@@ -25,13 +25,10 @@ class ShippingAddressEditTest extends TestCase
         $user = User::factory()->create();
         /** @var User $user */
         $this->actingAs($user);
-        //ユーザー作成してログインさせる
 
         $item = Item::factory()->create();
-        //アイテム作成
 
         $this->get("/purchase/address/?id={$item->id}")->assertStatus(200);
-        //住所変更画面へアクセス
 
         $data = [
             'user_id' => $user->id,
@@ -40,24 +37,18 @@ class ShippingAddressEditTest extends TestCase
             'shipping_address' => '東京都新宿区西新宿',
             'shipping_building' => 'テストビル101号室',
         ];
-        //住所変更データ作成
 
         $response = $this->post("/purchase/address/update?id={$item->id}", $data);
         
         $this->assertEquals('123-4567', session('purchase_data.shipping_zipcode'));
         $this->assertEquals('東京都新宿区西新宿', session('purchase_data.shipping_address'));
         $this->assertEquals('テストビル101号室', session('purchase_data.shipping_building'));
-        //assertEqualsとsession()で、セッションに保存されているか確認
 
         $response->assertSee('123-4567');
         $response->assertSee('東京都新宿区西新宿');
         $response->assertSee('テストビル101号室');
-        //ビューに送付先住所が表示されているか確認
-        //assertSeeはビューがproduct-purchaseかどうかではなく、
-        //レスポンスのHTML内に特定のテキストが含まれているかをチェックするだけ
 
         $response->assertViewIs('product-purchase');
-        //レスポンスがproduct-purchaseのビューを返しているか確認
     }
 
     /** @test */  //購入した商品に送付先住所が紐づいて登録されるかテスト
@@ -65,13 +56,10 @@ class ShippingAddressEditTest extends TestCase
         $user = User::factory()->create();
         /** @var User $user */
         $this->actingAs($user);
-        //ユーザー作成してログインさせる
 
         $item = Item::factory()->create();
-        //アイテム作成
 
         $this->get("/purchase/address/?id={$item->id}")->assertStatus(200);
-        //住所変更画面へアクセス
 
         $data = [
             'user_id' => $user->id,
@@ -81,10 +69,8 @@ class ShippingAddressEditTest extends TestCase
             'shipping_building' => 'テストビル102号室',
             'paymentMethod' => 'card',
         ];
-        //住所変更データ作成
 
         $this->post("/purchase/address/update?id={$item->id}", $data);
-        //住所変更のリクエスト
 
         $purchaseData = [
             'item_id' => $item->id,

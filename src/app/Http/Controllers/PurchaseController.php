@@ -6,10 +6,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Purchase;
 use App\Models\Item;
-use App\Http\Requests\PurchaseRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
-use Stripe\Stripe;
 use Stripe\Checkout\Session as StripeSession;
 
 class PurchaseController extends Controller

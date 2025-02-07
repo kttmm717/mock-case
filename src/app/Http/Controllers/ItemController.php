@@ -100,6 +100,7 @@ class ItemController extends Controller
             'image' => $request->file('image')->store('images', 'public'),
             'condition_id' => $request->condition_id,
             'item_name' => $request->name,
+            'brand_name' => $request->brand_name,
             'item_description' => $request->content,
             'price' => $request->price
         ]);

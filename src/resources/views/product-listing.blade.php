@@ -66,6 +66,9 @@
             @enderror
             <input class="item-name__input" type="text" name='name' value="{{old('name')}}">
 
+            <p class="section-item">ブランド名</p>
+            <input class="brand-name__input" type="text" name='brand_name' value="{{old('brand_name')}}">
+
             <p class="section-item">商品の説明</p>
             @error('content')
             <p class="error">{{$message}}</p>
