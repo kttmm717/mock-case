@@ -80,7 +80,7 @@
             paymentMethod(newValue) {
                 console.log("選択された支払い方法:", newValue);
             }
-        }
+        },
     });
 
     function removeFirstOptionOnSelect() {

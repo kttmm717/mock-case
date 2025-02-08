@@ -8,6 +8,7 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\KonbiniPaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,9 +47,8 @@ Route::post('/items/{item}/comments', [CommentController::class, 'store'])->midd
 Route::post('/purchase', [PurchaseController::class, 'purchase'])->name('purchase');
 Route::get('/purchase/success', [PurchaseController::class, 'success'])->name('purchase.success');
 Route::get('/purchase/cancel', [PurchaseController::class, 'cancel'])->name('purchase.cancel');
+Route::post('/payment-intent', 'PurchaseController@createPaymentIntent')->name('payment.intent');
 
 
-
-
-
+Route::post('/webhook/stripe', 'KonbiniPaymentController@handleWebhook');
 

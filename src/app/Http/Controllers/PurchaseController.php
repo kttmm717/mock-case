@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Stripe\Checkout\Session as StripeSession;
 use App\Http\Requests\PurchaseRequest;
+use App\Models\User;
+use Stripe\PaymentIntent;
+use Stripe\Stripe;
+
 
 class PurchaseController extends Controller
 {
@@ -24,8 +28,15 @@ class PurchaseController extends Controller
 
         \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
 
+        $paymentMethod = [];
+        if ($request->paymentMethod === 'konbini') {
+            $paymentMethod = ['konbini'];
+        } else if ($request->paymentMethod === 'card') {
+            $paymentMethod = ['card'];
+        }
+
         $checkoutSession = StripeSession::create([
-            'payment_method_types' => ['card', 'konbini'],
+            'payment_method_types' => $paymentMethod,
 
             'line_items' => [[  
                 'price_data' => [
@@ -55,6 +66,8 @@ class PurchaseController extends Controller
         $item = Item::findOrFail($request->item_id);
         $purchaseData = session('purchase_data', []);
 
+
+
         Purchase::create([
             'user_id' => $purchaseData['user_id'] ?? $user->id,
             'item_id' => $purchaseData['item_id'] ?? $item->id,
@@ -74,5 +87,30 @@ class PurchaseController extends Controller
     public function cancel() {
         return view('purchase.cancel');
     }
+
+    public function createPaymentIntent(Request $request)
+{
+    $user = auth()->user();
+    $item = Item::findOrFail($request->item_id);
+
+    Stripe::setApiKey(env('STRIPE_SECRET'));
+
+    $paymentIntent = PaymentIntent::create([
+        'amount' => $item->price,
+        'currency' => 'jpy',
+        'payment_method_types' => [$request->payment_method],
+        'metadata' => [
+            'user_id' => $user->id,
+            'item_id' => $item->id,
+            'shipping_zipcode' => $user->zipcode,
+            'shipping_address' => $user->address,
+            'shipping_building' => $user->building,
+            'payment_method' => $request->payment_method
+        ],
+    ]);
+
+    return response()->json(['client_secret' => $paymentIntent->client_secret]);
+}
+
 }
 

@@ -118,4 +118,7 @@
     .payment-app__select {
         width: 50%;
     }
+    .purchase-table__date {
+        font-size: 12px;
+    }
 }
