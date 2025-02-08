@@ -21,14 +21,14 @@
                     @csrf
                     <div class="register-form__group">
                         <p class="register-form__group--item">ユーザー名</p>
-                        <input type="text" name='name'>
+                        <input type="text" name='name' value="{{ old('name') }}">
                         @error('name')
                         <p class="error">{{$message}}</p>
                         @enderror
                     </div>
                     <div class="register-form__group">
                         <p class="register-form__group--item">メールアドレス</p>
-                        <input type="text" name='email'>
+                        <input type="text" name='email' value="{{ old('email') }}">
                         @error('email')
                         <p class="error">{{$message}}</p>
                         @enderror
