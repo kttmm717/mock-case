@@ -45,6 +45,10 @@
 .catalog-page__name {
     padding-top: 10px;
 }
+.catalog-page__group a {
+    text-decoration: none;
+    color: black;
+}
 .selected {
     color: red;
 }

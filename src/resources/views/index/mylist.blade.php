@@ -20,12 +20,14 @@
         @if(isset($likes) && count($likes) > 0)       
             @foreach($likes as $like)
             <div class="catalog-page__group">
-                <div class="catalog-page__img">
-                <img src="{{ strpos($like->item->image, 'images') !== false ? asset('storage/' . $like->item->image) : $like->item->image }}" alt="商品画像">
-                </div>
-                <div class="catalog-page__name">
-                    {{ $like->item->item_name }}
-                </div>
+                <a href="/item?id={{$like->item->id}}">
+                    <div class="catalog-page__img">
+                        <img src="{{ strpos($like->item->image, 'images') !== false ? asset('storage/' . $like->item->image) : $like->item->image }}" alt="商品画像">
+                    </div>
+                    <div class="catalog-page__name">
+                        {{ $like->item->item_name }}
+                    </div>
+                </a>
                 @if($like->item->is_sold)
                 <p class="sold-label">Sold</p>
                 @endif

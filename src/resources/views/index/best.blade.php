@@ -19,12 +19,14 @@
     <div class="catalog-page__inner">
         @foreach($items as $item)
         <div class="catalog-page__group">
-            <div class="catalog-page__img">
-            <img src="{{ strpos($item->image, 'images') !== false ? asset('storage/' . $item->image) : $item->image }}" alt="商品画像">
-            </div>
-            <div class="catalog-page__name">
-                {{$item->item_name}}
-            </div>
+            <a href="/item?id={{$item->id}}">
+                <div class="catalog-page__img">
+                    <img src="{{ strpos($item->image, 'images') !== false ? asset('storage/' . $item->image) : $item->image }}" alt="商品画像">
+                </div>
+                <div class="catalog-page__name">
+                    {{$item->item_name}}
+                </div>
+            </a>
             @if($item->is_sold)
             <p class="sold-label">Sold</p>
             @endif
